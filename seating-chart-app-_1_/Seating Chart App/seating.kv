@@ -1,0 +1,618 @@
+<MainMenu>:
+    FloatLayout:
+        # Set the background color for the entire screen
+        canvas.before:
+            Color:
+                rgba: 0.53, 0.81, 0.98, 1  # Sky blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Classroom Name Label
+        Label:
+            text: "Classroom Name"
+            font_size: 24
+            color: 1, 1, 1, 1  # White color for text
+            size_hint: None, None
+            size: 300, 40
+            pos_hint: {"center_x": 0.5, "y": 0.95}
+
+        # Teacher's Desk
+        Label:
+            text: "Teacher's Desk"
+            font_size: 18
+            color: 1, 1, 1, 1  # White text for contrast
+            size_hint: None, None
+            size: 100, 50
+            pos_hint: {"center_x": 0.3, "y": 0.85}
+            canvas.before:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1  # Dark grey background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        # Board
+        Label:
+            text: "Board"
+            font_size: 18
+            color: 1, 1, 1, 1  # White text for contrast
+            size_hint: None, None
+            size: 200, 30
+            pos_hint: {"center_x": 0.5, "y": 0.9}
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.2, 0.2, 1  # Dark grey background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        # Window (placed on the left side next to students)
+        Label:
+            text: "Window"
+            font_size: 18
+            color: 1, 1, 1, 1  # White text for contrast
+            size_hint: None, None
+            size: 60, 400
+            pos_hint: {"x": 0.05, "center_y": 0.5}
+            canvas.before:
+                Color:
+                    rgba: 0.7, 0.9, 1, 1  # Light blue for window background
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        # Seating Chart Layout (specific table positions)
+
+        # Top Left Table
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 150, 100
+            pos_hint: {"x": 0.2, "y": 0.65}
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.9, 0.9, 1  # Light cyan background for table
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+            Label:
+                text: root.seating_chart[0] if len(root.seating_chart) > 0 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[1] if len(root.seating_chart) > 1 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[2] if len(root.seating_chart) > 2 else ""
+                color: 0, 0, 0, 1
+
+        # Top Right Table
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 150, 100
+            pos_hint: {"x": 0.7, "y": 0.65}
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.9, 0.9, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+            Label:
+                text: root.seating_chart[3] if len(root.seating_chart) > 3 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[4] if len(root.seating_chart) > 4 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[5] if len(root.seating_chart) > 5 else ""
+                color: 0, 0, 0, 1
+
+                # Center Table (Vertical)
+        BoxLayout:
+            orientation: 'vertical'  # Change to vertical orientation for stacking labels
+            size_hint: None, None
+            size: 180, 120
+            pos_hint: {"center_x": 0.5, "y": 0.5}
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.9, 0.9, 1  # Light cyan background for table
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+            Label:
+                text: root.seating_chart[6] if len(root.seating_chart) > 6 else ""
+                color: 0, 0, 0, 1  # Black text for contrast
+            Label:
+                text: root.seating_chart[7] if len(root.seating_chart) > 7 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[8] if len(root.seating_chart) > 8 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[9] if len(root.seating_chart) > 9 else ""
+                color: 0, 0, 0, 1
+
+
+        # Bottom Center Table (Single Seat)
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 100, 50
+            pos_hint: {"center_x": 0.5, "y": 0.3}
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.9, 0.9, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+            Label:
+                text: root.seating_chart[10] if len(root.seating_chart) > 10 else ""
+                color: 0, 0, 0, 1
+
+        # Bottom Left Table
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 150, 100
+            pos_hint: {"x": 0.2, "y": 0.35}
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.9, 0.9, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+            Label:
+                text: root.seating_chart[11] if len(root.seating_chart) > 11 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[12] if len(root.seating_chart) > 12 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[13] if len(root.seating_chart) > 13 else ""
+                color: 0, 0, 0, 1
+
+        # Bottom Right Table
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            size: 150, 100
+            pos_hint: {"x": 0.7, "y": 0.35}
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.9, 0.9, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10,]
+            Label:
+                text: root.seating_chart[14] if len(root.seating_chart) > 14 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[15] if len(root.seating_chart) > 15 else ""
+                color: 0, 0, 0, 1
+            Label:
+                text: root.seating_chart[16] if len(root.seating_chart) > 16 else ""
+                color: 0, 0, 0, 1
+
+        # Side Menu with Period Selector, Name List, and Navigation Buttons
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.2, 0.9
+            pos_hint: {"x": 0, "top": 0.98}
+            padding: 10
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.2, 0.2, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Period"
+                size_hint_y: None
+                height: 40
+                color: 1, 1, 1, 1
+
+            Spinner:
+                text: "Select Period"
+                values: ["Period 1", "Period 2", "Period 3"]
+                size_hint_y: None
+                height: 40
+                background_color: 0.4, 0.4, 0.4, 1
+                color: 1, 1, 1, 1
+
+            Label:
+                text: "Students"
+                size_hint_y: None
+                height: 40
+                color: 1, 1, 1, 1
+
+            ScrollView:
+                size_hint_y: 0.4
+                BoxLayout:
+                    id: student_list
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+
+            Button:
+                text: "Edit Name List and Preferences"
+                size_hint_y: None
+                height: 50
+                background_color: 0.3, 0.3, 0.3, 1
+                color: 1, 1, 1, 1
+                on_release: app.root.current = 'name_preferences'
+
+            Button:
+                text: "Room and Desk Configuration"
+                size_hint_y: None
+                height: 50
+                background_color: 0.3, 0.3, 0.3, 1
+                color: 1, 1, 1, 1
+                on_release: app.root.current = 'room_config'
+
+            Button:
+                text: "Customize Student Preferences"
+                size_hint_y: None
+                height: 50
+                background_color: 0.3, 0.3, 0.3, 1
+                color: 1, 1, 1, 1
+                on_release: app.root.current = 'customize_preferences'
+
+            Button:
+                text: "Randomize!"
+                size_hint_y: None
+                height: 60
+                background_color: 0.2, 0.6, 0.2, 1
+                color: 1, 1, 1, 1
+                on_release: root.randomize_seating()
+
+
+        # Bottom Bar with Save/Print/Export
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            pos_hint: {"x": 0, "y": 0}
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.2, 0.2, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                text: "Save"
+                background_color: 0.3, 0.3, 0.3, 1
+                color: 1, 1, 1, 1
+
+
+            Button:
+                text: "Print"
+                background_color: 0.3, 0.3, 0.3, 1
+                color: 1, 1, 1, 1
+
+            Button:
+                text: "Share/Export"
+                background_color: 0.3, 0.3, 0.3, 1
+                color: 1, 1, 1, 1
+
+            Label:
+                text: "Seats: 20 Students/21 Free"
+                color: 1, 1, 1, 1
+
+
+<NamePreferencesScreen>:
+    name: "name_preferences"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.53, 0.81, 0.98, 1  # Sky blue background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Name List and Preferences Menu"
+            font_size: 24
+            color: 1, 1, 1, 1  # White text
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 20
+
+            # Name List
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_x: 0.6
+                spacing: 10
+
+                Label:
+                    text: "Name List:"
+                    font_size: 18
+                    color: 0, 0, 0, 1  # Black text
+                    size_hint_y: None
+                    height: 30
+
+                ScrollView:
+                    size_hint_y: 0.7
+                    BoxLayout:
+                        id: name_list_box
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+
+                TextInput:
+                    id: new_name_input
+                    hint_text: "Enter name to add"
+                    size_hint_y: None
+                    height: 40
+                    multiline: False
+
+                Button:
+                    text: "Add Name"
+                    size_hint_y: None
+                    height: 40
+                    background_color: 0.2, 0.6, 0.2, 1  # Green background
+                    on_release: root.add_student(new_name_input.text)
+
+            # Right-side Actions
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_x: 0.4
+                spacing: 10
+
+                Button:
+                    text: "Customize Student Preferences"
+                    size_hint_y: None
+                    height: 50
+                    background_color: 0.6, 0.8, 0.6, 1  # Light green
+                    on_release: root.open_customize_preferences()
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: 50
+            spacing: 10
+
+            Button:
+                text: "Save and Return"
+                background_color: 0, 1, 0, 1  # Green
+                on_release: root.save_and_return()
+
+            Button:
+                text: "Cancel"
+                background_color: 1, 0, 0, 1  # Red
+                on_release: app.root.current = "main_menu"
+
+
+
+<RoomConfigScreen>:
+    name: "room_config"
+
+    FloatLayout:
+        # Background color
+        canvas.before:
+            Color:
+                rgba: 0.53, 0.81, 0.98, 1  # Sky blue background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Title Label
+        Label:
+            text: "Room Desk and Configuration Menu"
+            font_size: 24
+            color: 1, 1, 1, 1  # White text
+            size_hint: None, None
+            size: 400, 50
+            pos_hint: {"center_x": 0.5, "y": 0.9}
+
+        # Room Layout (dynamic area for desks)
+        FloatLayout:
+            id: room_layout
+            size_hint: 0.7, 0.7
+            pos_hint: {"x": 0.05, "y": 0.1}
+            canvas.before:
+                Color:
+                    rgba: 0.9, 0.9, 1, 1  # Light blue for the room area
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        # Buttons on the right
+        BoxLayout:
+            orientation: "vertical"
+            size_hint: 0.2, 0.8
+            pos_hint: {"x": 0.8, "y": 0.1}
+            spacing: 10
+
+            Button:
+                text: "Add Student Desk"
+                background_color: 0.6, 0.8, 0.6, 1  # Light green
+                on_release: root.add_student_desk()
+
+            Button:
+                text: "Add Teacher Desk"
+                background_color: 0.6, 0.8, 0.6, 1  # Light green
+                on_release: root.add_teacher_desk()
+
+            Button:
+                text: "Configure Student Desk"
+                background_color: 0.8, 0.8, 0.6, 1  # Light yellow
+                on_release: root.configure_desk()
+
+            Button:
+                text: "Delete Object"
+                background_color: 1, 0.4, 0.4, 1  # Red
+                on_release: root.delete_object()
+
+            Button:
+                text: "Save and Return"
+                background_color: 0, 0.8, 0, 1  # Green
+                on_release: root.save_configuration()
+
+            Button:
+                text: "Cancel"
+                background_color: 1, 0, 0, 1  # Red
+                on_release: root.cancel_configuration()
+
+
+
+
+<CustomizePreferencesScreen>:
+    name: "customize_preferences"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.53, 0.81, 0.98, 1  # Sky blue background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Title
+        Label:
+            text: "Customize Student Preferences"
+            font_size: 24
+            color: 1, 1, 1, 1  # White text
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 20
+
+            # Left Panel (Student and Preferences Selection)
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_x: 0.4
+                spacing: 10
+
+                Spinner:
+                    id: student_spinner
+                    text: "Choose Name"
+                    values: []  # Populated dynamically from randomized list
+                    size_hint_y: None
+                    height: 40
+                    on_text: root.set_selected_student(self.text)
+
+                CheckBox:
+                    id: specify_seat_checkbox
+                    size_hint: None, None
+                    size: 30, 30
+                    on_active: seat_layout.opacity = 1 if self.active else 0
+
+                Label:
+                    text: "Specify Seat"
+                    size_hint_y: None
+                    height: 40
+
+                CheckBox:
+                    id: specify_preference_checkbox
+                    size_hint: None, None
+                    size: 30, 30
+                    on_active: preference_spinner.opacity = 1 if self.active else 0
+
+                Label:
+                    text: "Specify Student Preference"
+                    size_hint_y: None
+                    height: 40
+
+                Spinner:
+                    id: preference_spinner
+                    text: "Choose Other Name"
+                    opacity: 0
+                    values: []  # Populated dynamically
+                    size_hint_y: None
+                    height: 40
+
+                ToggleButton:
+                    text: "Sit with this student"
+                    group: "preference"
+                    size_hint_y: None
+                    height: 40
+                    on_release: root.set_sit_with_preference("sit_with")
+
+                ToggleButton:
+                    text: "Do not sit with this student"
+                    group: "preference"
+                    size_hint_y: None
+                    height: 40
+                    on_release: root.set_sit_with_preference("not_sit_with")
+
+            # Right Panel (Seat Selection)
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_x: 0.6
+                id: seat_layout
+                opacity: 0  # Hidden by default until Specify Seat is checked
+
+                Label:
+                    text: "Specify which tables student should sit at:"
+                    size_hint_y: None
+                    height: 40
+
+                GridLayout:
+                    cols: 3
+                    spacing: 10
+                    size_hint_y: None
+                    height: self.minimum_height
+
+                    Button:
+                        text: "Seat 1"
+                        size_hint: None, None
+                        size: 100, 50
+                        on_release: root.add_seat_preference("Seat 1")
+
+                    Button:
+                        text: "Seat 2"
+                        size_hint: None, None
+                        size: 100, 50
+                        on_release: root.add_seat_preference("Seat 2")
+
+                    Button:
+                        text: "Seat 3"
+                        size_hint: None, None
+                        size: 100, 50
+                        on_release: root.add_seat_preference("Seat 3")
+
+                    Button:
+                        text: "Seat 4"
+                        size_hint: None, None
+                        size: 100, 50
+                        on_release: root.add_seat_preference("Seat 4")
+
+        # Save and Cancel Buttons
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: 50
+            spacing: 10
+
+            Button:
+                text: "Save and Return"
+                background_color: 0, 1, 0, 1  # Green
+                on_release: root.save_and_return()
+
+            Button:
+                text: "Cancel"
+                background_color: 1, 0, 0, 1  # Red
+                on_release: root.cancel()
+
+
